@@ -65,3 +65,4 @@ furcast_landing/
 - The contact link uses a placeholder address (`hello@furcast.example`). Replace it with the project's actual contact email before presenting it as a real business.
 - Images are visual placeholders; replace the image URLs in `templates/index.html` with approved project images if available.
 - Flask is only used to serve the page. The site intentionally has no database or system functionality.
+\n\n## Vercel deployment fix\n\nThe HTML template is explicitly resolved from `templates/`. CSS and JavaScript are copied into `public/` and referenced as `/css/style.css` and `/js/main.js`, because Vercel serves `public/` assets through its CDN. Keep `app.py`, `requirements.txt`, `templates/`, and `public/` at the Vercel Project Root Directory.\n
