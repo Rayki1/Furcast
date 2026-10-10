@@ -70,3 +70,7 @@ furcast_landing/
 ## Local CSS/JS routes
 
 The Flask app explicitly serves `public/css/` at `/css/` and `public/js/` at `/js/`. Make sure the `public` folder is beside `app.py`.
+
+
+## Responsive update
+Updated responsive breakpoints and container sizing for phones (including narrow screens), tablets/iPads, laptops, and desktop displays. Both `public/css/style.css` and `static/css/style.css` contain the same responsive rules.
