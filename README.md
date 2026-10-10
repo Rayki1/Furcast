@@ -66,3 +66,7 @@ furcast_landing/
 - Images are visual placeholders; replace the image URLs in `templates/index.html` with approved project images if available.
 - Flask is only used to serve the page. The site intentionally has no database or system functionality.
 \n\n## Vercel deployment fix\n\nThe HTML template is explicitly resolved from `templates/`. CSS and JavaScript are copied into `public/` and referenced as `/css/style.css` and `/js/main.js`, because Vercel serves `public/` assets through its CDN. Keep `app.py`, `requirements.txt`, `templates/`, and `public/` at the Vercel Project Root Directory.\n
+
+## Local CSS/JS routes
+
+The Flask app explicitly serves `public/css/` at `/css/` and `public/js/` at `/js/`. Make sure the `public` folder is beside `app.py`.

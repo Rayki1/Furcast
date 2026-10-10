@@ -29,4 +29,19 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     });
   });
+  // Contact form: validate fields and show an honest demo confirmation.
+  const conversationForm = document.getElementById("conversationForm");
+  const formSuccess = document.getElementById("formSuccess");
+  if (conversationForm && formSuccess) {
+    conversationForm.addEventListener("submit", (event) => {
+      event.preventDefault();
+      if (!conversationForm.reportValidity()) return;
+      formSuccess.hidden = false;
+      formSuccess.scrollIntoView({ behavior: "smooth", block: "nearest" });
+    });
+    conversationForm.addEventListener("input", () => {
+      formSuccess.hidden = true;
+    });
+  }
+
 });

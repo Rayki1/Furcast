@@ -218,3 +218,72 @@ img { max-width: 100%; display: block; }
 @media (prefers-reduced-motion: reduce) {
   *,*::before,*::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
 }
+
+
+/* Contact form modal */
+.contact-inner .button-cream { border: 0; cursor: pointer; font: inherit; font-weight: 700; }
+.conversation-modal .modal-dialog { margin: 1rem auto; }
+.conversation-modal .modal-content { border: 1px solid rgba(255,255,255,.75); border-radius: 28px; overflow: hidden; background: var(--cream); box-shadow: 0 28px 90px rgba(18,28,14,.28); }
+.conversation-modal .modal-header { align-items: flex-start; padding: 30px 32px 18px; border: 0; }
+.conversation-modal .modal-title { margin-top: 9px; color: var(--olive-deep); font: 800 clamp(1.8rem,4vw,2.5rem)/1.1 'Manrope',sans-serif; letter-spacing: -.055em; }
+.conversation-modal .modal-title span { color: #91a078; }
+.conversation-modal .modal-header p { margin: 10px 0 0; color: var(--muted); font-size: .9rem; }
+.modal-kicker { color: var(--olive-soft); font-size: .68rem; font-weight: 800; letter-spacing: .16em; }
+.conversation-modal .btn-close { flex: 0 0 auto; margin: 0 0 0 16px; padding: 10px; border-radius: 50%; background-color: #e8ecdf; }
+.conversation-modal .modal-body { padding: 8px 32px 32px; }
+.conversation-modal .form-label { margin-bottom: 7px; color: var(--olive); font-size: .78rem; font-weight: 700; }
+.conversation-modal .form-control { min-height: 49px; padding: 12px 14px; border: 1px solid #dfe3d5; border-radius: 13px; background: rgba(255,255,255,.78); color: var(--ink); font: 500 .88rem 'DM Sans',sans-serif; box-shadow: none; }
+.conversation-modal textarea.form-control { min-height: 120px; resize: vertical; }
+.conversation-modal .form-control:focus { border-color: #8b9a72; background: white; box-shadow: 0 0 0 4px rgba(139,154,114,.16); }
+.conversation-modal .form-control::placeholder { color: #a0a596; }
+.form-footnote { display: flex; gap: 8px; align-items: flex-start; margin: 18px 0; color: #7c8372; font-size: .72rem; line-height: 1.5; }
+.form-footnote span { color: #8d9a75; }
+.modal-submit { border: 0; cursor: pointer; }
+.form-success { margin-top: 16px; padding: 14px 16px; border: 1px solid #d6dfc9; border-radius: 14px; background: #edf1e7; color: var(--olive); font-size: .85rem; line-height: 1.6; }
+@media (max-width: 575.98px) {
+  html { scroll-padding-top: 82px; }
+  .section-wrap { width: calc(100% - 32px); }
+  .floating-nav { width: calc(100% - 20px); margin-top: 8px; top: 8px; padding: 8px 11px; border-radius: 21px; }
+  .brand { font-size: 1.2rem; }
+  .brand-mark { width: 31px; height: 31px; }
+  .nav-toggle { width: 39px; height: 39px; }
+  .navbar-collapse { padding: 10px 2px 5px; }
+  .floating-nav .nav-link { font-size: .9rem; padding: 11px 12px !important; }
+  .nav-cta { display: block; margin: 8px 0 2px; padding: 12px 15px; }
+  .hero { padding-top: 43px; gap: 22px; }
+  .eyebrow { font-size: .61rem; padding: 9px 11px; letter-spacing: .1em; }
+  .hero h1 { font-size: clamp(2.8rem, 12.4vw, 4rem); line-height: 1.02; letter-spacing: -.06em; }
+  .hero-text { line-height: 1.75; }
+  .hero-actions { align-items: stretch; flex-direction: column; gap: 13px; }
+  .hero-actions .button { width: 100%; justify-content: space-between; }
+  .hero-actions .text-link { align-self: flex-start; padding: 4px 0; }
+  .hero-visual { margin: 0; padding: 7px 8px 24px; }
+  .hero-image-frame { height: 105vw; max-height: 420px; min-height: 290px; border-radius: 42% 42% 24px 24px; }
+  .image-label { left: 12px; right: 12px; bottom: 12px; padding: 11px 12px; border-radius: 14px; }
+  .image-label strong { font-size: .76rem; }
+  .image-label small { font-size: .62rem; }
+  .note-top { top: 34px; left: -7px; }
+  .note-bottom { bottom: 34px; right: -6px; }
+  .floating-note { gap: 7px; padding: 9px 10px; border-radius: 13px; }
+  .floating-note small { font-size: .52rem; }
+  .floating-note strong { font-size: .64rem; }
+  .note-icon,.forecast-icon { width: 27px; height: 27px; border-radius: 9px; }
+  .hero-bottomline { font-size: .44rem; letter-spacing: .04em; gap: 7px; }
+  .intro h2,.section-heading h2,.features h2 { font-size: clamp(2.25rem, 9.7vw, 3.2rem); }
+  .value-strip { border-radius: 18px; }
+  .services-section { border-radius: 24px 24px 0 0; }
+  .service-image { height: 205px; }
+  .features-visual > img { height: 350px; border-radius: 100px 100px 20px 20px; }
+  .quote-card { right: -5px; width: 88%; }
+  .contact-inner h2 { font-size: clamp(2.25rem, 9.5vw, 3.1rem); }
+  .contact-inner .button { width: 100%; max-width: 320px; }
+  .footer-links { gap: 12px 17px; }
+  .conversation-modal .modal-dialog { margin: .55rem; }
+  .conversation-modal .modal-content { border-radius: 22px; }
+  .conversation-modal .modal-header { padding: 22px 20px 12px; }
+  .conversation-modal .modal-body { padding: 8px 20px 23px; }
+  .conversation-modal .modal-title { font-size: 1.75rem; }
+  .conversation-modal .modal-header p { font-size: .82rem; padding-right: 5px; }
+  .conversation-modal .form-control { min-height: 46px; }
+  .modal-submit { width: 100%; }
+}
