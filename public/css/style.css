@@ -2360,3 +2360,102 @@ img {
     padding: 2rem 1.25rem;
   }
 }
+
+/* Mobile CTA sizing and accurate navbar anchor landing */
+html {
+  scroll-padding-top: 88px;
+}
+#services,
+#features,
+#contact-cta {
+  scroll-margin-top: 88px;
+}
+
+@media (max-width: 991.98px) {
+  html { scroll-padding-top: 94px; }
+  #services, #features, #contact-cta { scroll-margin-top: 94px; }
+}
+
+@media (max-width: 767.98px) {
+  .how-cta {
+    align-items: center;
+    text-align: center;
+    padding: 2.25rem 1.15rem;
+    gap: 1.1rem;
+  }
+
+  .how-cta .section-kicker {
+    margin-bottom: .85rem;
+  }
+
+  .how-cta h2 {
+    font-size: clamp(2rem, 8vw, 2.65rem);
+    line-height: 1.08;
+    margin-bottom: .9rem;
+  }
+
+  .how-cta p {
+    font-size: 1rem;
+    line-height: 1.65;
+  }
+
+  .how-cta-actions {
+    width: 100%;
+    max-width: none;
+    align-items: center;
+    gap: .75rem;
+    margin-top: .2rem;
+  }
+
+  .how-cta-actions .button,
+  .how-cta .button {
+    width: min(100%, 15rem);
+    min-width: 0;
+    min-height: 3.15rem;
+    height: auto;
+    flex: 0 1 auto;
+    padding: .85rem 1.25rem;
+    font-size: .98rem;
+    line-height: 1.2;
+    border-radius: 999px;
+  }
+}
+
+@media (max-width: 420px) {
+  .how-cta {
+    padding: 2rem 1rem;
+  }
+
+  .how-cta-actions .button,
+  .how-cta .button {
+    width: min(100%, 14rem);
+    min-height: 3rem;
+    padding: .8rem 1rem;
+  }
+}
+
+
+/* Keep the contact modal close control pinned to the far right. */
+.conversation-modal .modal-header {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+}
+.conversation-modal .modal-header > div {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+.conversation-modal .btn-close {
+  flex: 0 0 auto;
+  margin: 0 0 0 auto;
+  align-self: flex-start;
+}
+@media (max-width: 575.98px) {
+  .conversation-modal .modal-header {
+    padding: 24px 20px 16px;
+    gap: 12px;
+  }
+  .conversation-modal .btn-close {
+    margin-left: auto;
+  }
+}

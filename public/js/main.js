@@ -28,15 +28,45 @@ document.addEventListener("DOMContentLoaded", () => {
     sections.forEach((section) => observer.observe(section));
   }
 
-  // Close the mobile navigation after selecting a destination.
-  document.querySelectorAll("#mainNav .nav-link, #mainNav .nav-cta").forEach((link) => {
-    link.addEventListener("click", () => {
-      const menu = document.getElementById("mainNav");
-      if (menu && menu.classList.contains("show") && window.bootstrap) {
-        window.bootstrap.Collapse.getOrCreateInstance(menu).hide();
+  // Scroll section anchors to a consistent position just below the floating navbar.
+  // The section top is placed at ~88px on desktop and ~94px on mobile, matching the reference layout.
+  const mainNav = document.getElementById("mainNav");
+  let pendingNavTarget = null;
+
+  const scrollToNavTarget = (target) => {
+    if (!target) return;
+    const topOffset = window.matchMedia("(max-width: 991.98px)").matches ? 94 : 88;
+    const targetTop = target.getBoundingClientRect().top + window.scrollY - topOffset;
+    window.scrollTo({ top: Math.max(0, targetTop), behavior: "smooth" });
+  };
+
+  document.querySelectorAll('#mainNav a[href^="#"]').forEach((link) => {
+    link.addEventListener("click", (event) => {
+      const target = document.querySelector(link.getAttribute("href"));
+      if (!target) return;
+      event.preventDefault();
+      pendingNavTarget = target;
+
+      if (mainNav && mainNav.classList.contains("show") && window.bootstrap) {
+        window.bootstrap.Collapse.getOrCreateInstance(mainNav).hide();
+      } else {
+        scrollToNavTarget(target);
+        history.replaceState(null, "", link.getAttribute("href"));
+        pendingNavTarget = null;
       }
     });
   });
+
+  if (mainNav) {
+    mainNav.addEventListener("hidden.bs.collapse", () => {
+      if (!pendingNavTarget) return;
+      const target = pendingNavTarget;
+      const link = document.querySelector(`#mainNav a[href="#${target.id}"]`);
+      scrollToNavTarget(target);
+      if (link) history.replaceState(null, "", link.getAttribute("href"));
+      pendingNavTarget = null;
+    });
+  }
   // Contact form: validate fields and show an honest demo confirmation.
   const conversationForm = document.getElementById("conversationForm");
   const formSuccess = document.getElementById("formSuccess");
