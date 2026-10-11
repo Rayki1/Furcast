@@ -52,4 +52,70 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
+
+  // Registration form validation and show/hide password control.
+  const registerForm = document.getElementById("registerForm");
+  const passwordField = document.getElementById("regPassword");
+  const confirmPasswordField = document.getElementById("regConfirmPassword");
+  const showPasswords = document.getElementById("toggleRegPassword");
+  const registerSuccess = document.getElementById("registerSuccess");
+
+  if (showPasswords && passwordField && confirmPasswordField) {
+    showPasswords.addEventListener("change", () => {
+      const type = showPasswords.checked ? "text" : "password";
+      passwordField.type = type;
+      confirmPasswordField.type = type;
+    });
+  }
+
+  if (registerForm) {
+    const validatePasswordMatch = () => {
+      const matches = confirmPasswordField.value === passwordField.value;
+      confirmPasswordField.setCustomValidity(matches ? "" : "Passwords do not match");
+      confirmPasswordField.classList.toggle("is-invalid", !matches && confirmPasswordField.value.length > 0);
+      return matches;
+    };
+    passwordField.addEventListener("input", () => {
+      if (confirmPasswordField.value) validatePasswordMatch();
+    });
+    confirmPasswordField.addEventListener("input", validatePasswordMatch);
+    registerForm.addEventListener("submit", (event) => {
+      event.preventDefault();
+      validatePasswordMatch();
+      if (!registerForm.checkValidity()) {
+        registerForm.classList.add("was-validated");
+        registerForm.reportValidity();
+        if (registerSuccess) registerSuccess.hidden = true;
+        return;
+      }
+      registerForm.classList.add("was-validated");
+      if (registerSuccess) registerSuccess.hidden = false;
+    });
+    document.getElementById("registerModal")?.addEventListener("hidden.bs.modal", () => {
+      registerForm.classList.remove("was-validated");
+      registerForm.querySelectorAll(".is-invalid").forEach((field) => field.classList.remove("is-invalid"));
+      if (registerSuccess) registerSuccess.hidden = true;
+    });
+  }
+
+
+  // Open the existing Register modal from the appointment/location popup.
+  const appointmentRegisterButton = document.getElementById("bookAppointmentRegister");
+  const appointmentModalElement = document.getElementById("appointmentModal");
+  const registerModalElement = document.getElementById("registerModal");
+
+  if (appointmentRegisterButton && appointmentModalElement && registerModalElement && window.bootstrap) {
+    appointmentRegisterButton.addEventListener("click", () => {
+      const appointmentModal = window.bootstrap.Modal.getOrCreateInstance(appointmentModalElement);
+      const registerModal = window.bootstrap.Modal.getOrCreateInstance(registerModalElement);
+
+      appointmentModalElement.addEventListener("hidden.bs.modal", function showRegisterAfterClose() {
+        appointmentModalElement.removeEventListener("hidden.bs.modal", showRegisterAfterClose);
+        registerModal.show();
+      });
+
+      appointmentModal.hide();
+    });
+  }
+
 });

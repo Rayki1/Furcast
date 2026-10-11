@@ -65,7 +65,12 @@ furcast_landing/
 - The contact link uses a placeholder address (`hello@furcast.example`). Replace it with the project's actual contact email before presenting it as a real business.
 - Images are visual placeholders; replace the image URLs in `templates/index.html` with approved project images if available.
 - Flask is only used to serve the page. The site intentionally has no database or system functionality.
-\n\n## Vercel deployment fix\n\nThe HTML template is explicitly resolved from `templates/`. CSS and JavaScript are copied into `public/` and referenced as `/css/style.css` and `/js/main.js`, because Vercel serves `public/` assets through its CDN. Keep `app.py`, `requirements.txt`, `templates/`, and `public/` at the Vercel Project Root Directory.\n
+
+
+## Vercel deployment fix
+
+The HTML template is explicitly resolved from `templates/`. CSS and JavaScript are copied into `public/` and referenced as `/css/style.css` and `/js/main.js`, because Vercel serves `public/` assets through its CDN. Keep `app.py`, `requirements.txt`, `templates/`, and `public/` at the Vercel Project Root Directory.
+
 
 ## Local CSS/JS routes
 
@@ -74,3 +79,11 @@ The Flask app explicitly serves `public/css/` at `/css/` and `public/js/` at `/j
 
 ## Responsive update
 Updated responsive breakpoints and container sizing for phones (including narrow screens), tablets/iPads, laptops, and desktop displays. Both `public/css/style.css` and `static/css/style.css` contain the same responsive rules.
+
+
+## Landing-page updates
+- Updated the hero call-to-action to **Book Appointment** and the navigation call-to-action to **Register**, with a profile icon beside it.
+- Replaced the service cards with six grooming services.
+- Added testimonial, booking steps, and FAQ sections to the page (not to the navigation bar).
+- Added a floating green Contact shortcut that scrolls to the contact options.
+- The landing page remains a frontend concept: registration, appointment booking, and form submissions are not connected to a backend and do not save or send data.
